@@ -12,6 +12,7 @@ import {
 import { Stack, Animation } from '@devexpress/dx-react-chart';
 import Result from './processCard'
 import { useState, useEffect } from 'react';
+import useData from './useFetchData'
 
 const Root = props => (
   <Legend.Root {...props} sx={{ display: 'block', margin: 'auto' }} />
@@ -21,29 +22,20 @@ const Label = props => (
 );
 
 const IndexPage = () =>{
-  const [carddata, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
+  let defaulturl = 'http://localhost:3000/api/reports/chart'
 
+  const {loading , cards, fetchData} = useData(defaulturl)
   const [status, setStatus] = useState('')
   const [label, setLabel] = useState('')
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
-
-  let defaulturl = 'http://localhost:3000/api/reports/chart'
-  
-  const fetchData = (url_to_fetch) =>{
-    setLoading(true);
-    Result(url_to_fetch).then((cardResult) =>{
-      setData(cardResult);
-      setLoading(false);
-    })
-  }
   
   const returnChart = () =>{
+    console.log(cards)
     return (
       <Paper>
         <Chart
-          data={carddata}
+          data={cards}
         >
           <ArgumentAxis/>
           <ValueAxis/>
@@ -243,10 +235,6 @@ const IndexPage = () =>{
     fetchData(defaulturl)
   }
 
-  useEffect( () => {
-    fetchData(defaulturl);
-}, [])
-
   return (
     <div>
       <div id="UserInput">
@@ -294,6 +282,5 @@ const IndexPage = () =>{
       </div>
     </div>
   )
-
 }
 export default IndexPage
