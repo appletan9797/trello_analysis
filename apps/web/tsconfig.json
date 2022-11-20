@@ -1,5 +1,5 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/index.js", "src/pages/index copy.js", "src/backend/config/trello.js", "src/backend/config/trello.js", "src/backend/services/cardService.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/index.js", "src/pages/index copy.js", "src/backend/config/trello.js", "src/backend/config/trello.js", "src/backend/services/cardService.js", "src/pages/ag-grid-test.js"],
   "exclude": ["node_modules"]
 }
