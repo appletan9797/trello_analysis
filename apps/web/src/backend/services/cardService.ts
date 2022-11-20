@@ -328,7 +328,7 @@ class CardService {
 
     return labelCardNumbersMap;
   }
-}
+ }
 
 const cardService = new CardService();
 
